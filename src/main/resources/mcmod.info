@@ -1,0 +1,16 @@
+[
+{
+  "modid": "thanos",
+  "name": "Thanos",
+  "description": "A mod that adds a Thanos boss fight.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["fallOut015"],
+  "credits": "The Forge and FML guys, for making this example. All the tutorial guys like HarryTalks, the forge devs for answering my forum questions, etc. David for the idea. And anonymous for the thanos texture.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["teamsmod", "worldedit", "revivemod"]
+}
+]

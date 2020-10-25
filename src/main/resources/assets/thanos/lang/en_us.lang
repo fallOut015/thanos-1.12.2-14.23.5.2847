@@ -1,0 +1,16 @@
+entity.mandala.name=Mandala
+entity.portal.name=Portal
+entity.ship.name=Ship
+entity.thanos.name=Thanos
+entity.thanos.kill=Thanos killed %s
+entity.thanos.killerr=Error, that player does not exist (with the UUID \"%s\")
+
+item.mind_stone.name=Mind Stone
+item.power_stone.name=Power Stone
+item.reality_stone.name=Reality Stone
+item.soul_stone.name=Soul Stone
+item.space_stone.name=Space Stone
+item.time_stone.name=Time Stone
+
+commands.thanos.usage=/thanos <x> <y> <z>
+commands.tsnap.usage=/tsnap

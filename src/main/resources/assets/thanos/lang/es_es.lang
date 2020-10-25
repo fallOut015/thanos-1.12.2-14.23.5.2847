@@ -1,0 +1,16 @@
+entity.mandala.name=Mandala
+entity.portal.name=Portal
+entity.ship.name=Nave
+entity.thanos.name=Thanos
+entity.thanos.kill=Thanos mato a %s
+entity.thanos.killerr=Error, ese jugador no existe (con el UUID \"%s\")
+
+item.mind_stone.name=Gema de la Mente
+item.power_stone.name=Gema del Poder
+item.reality_stone.name=Gema de la Realidad
+item.soul_stone.name=Gema del Alma
+item.space_stone.name=Gema del Espacio
+item.time_stone.name=Gema del Tiempo
+
+commands.thanos.usage=/thanos <x> <y> <z>
+commands.tsnap.usage=/tsnap

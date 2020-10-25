@@ -1,0 +1,12 @@
+{
+	"snap": {
+    	"category": "neutral",
+   		"subtitle": "thanos.subtitle.snap",
+    	"sounds": [ "thanos:snap" ]
+  	},
+	"land": {
+    	"category": "neutral",
+    	"subtitle": "thanos.subtitle.land",
+    	"sounds": [ "thanos:land" ]
+  	}
+}
