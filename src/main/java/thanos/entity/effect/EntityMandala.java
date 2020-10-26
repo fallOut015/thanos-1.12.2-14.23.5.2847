@@ -39,7 +39,7 @@ public class EntityMandala extends Entity {
 		
 		this.getEntityWorld().getEntitiesWithinAABBExcludingEntity(this.caster, this.getEntityBoundingBox().grow(2.125 * this.scale(this.ticksExisted), 5, 2.125 * this.scale(this.ticksExisted))).forEach(entity -> {
 			if(entity instanceof EntityLivingBase && entity != this.caster) {
-				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, 2, true, false));
+				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, 2, false, false));
 			}
 		});
 		
