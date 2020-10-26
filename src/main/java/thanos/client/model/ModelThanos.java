@@ -85,10 +85,6 @@ public class ModelThanos extends ModelBiped {
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
     	super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
 
-//    	if(((EntityThanos) entityIn).getLookHelper().getIsLooking()) {
-//    		((EntityThanos) entityIn).getLookHelper().onUpdateLook();
-//    	}
-    	
     	if(((EntityThanos) entityIn).isSnapping()) {
     		double x = EntityMandala.y(((EntityThanos) entityIn).getSnappingTime(), -2, 200, 6);
     		if(((EntityThanos) entityIn).getSnappingTime() >= 90 && ((EntityThanos) entityIn).getSnappingTime() <= 110) {
