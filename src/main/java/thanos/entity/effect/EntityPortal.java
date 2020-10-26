@@ -23,12 +23,6 @@ public class EntityPortal extends Entity {
 	public EntityPortal(World worldIn, Optional<BlockPos> to) {
 		super(worldIn);
 		
-		if(!to.isPresent()) {
-			System.out.println("this is a to portal");
-		} else {
-			System.out.println("this is a from portal");
-		}
-		
 		this.getDataManager().set(TO, to);
 		this.setSize(4, 4);
 		this.setEntityBoundingBox(this.getEntityBoundingBox().grow(1d, 1d, 0.025d));
@@ -70,7 +64,6 @@ public class EntityPortal extends Entity {
 		if(this.ticksExisted >= 25) {
 			this.getEntityWorld().getEntitiesWithinAABB(EntityLivingBase.class, this.getEntityBoundingBox()).forEach(entityIn -> {
 				if(entityIn instanceof EntityLiving && this.getDataManager().get(TO).isPresent()) {
-					System.out.println("\"colliding\" with a FROM portal");
 					entityIn.setPosition(this.getToX(), this.getToY(), this.getToZ());
 				}
 			});			
