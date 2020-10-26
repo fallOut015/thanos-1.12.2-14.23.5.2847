@@ -34,38 +34,18 @@ public abstract class Attack {
 		return this.canapply;
 	}
 	protected final boolean isCooledDown() {
-		if(this.cooldown <= 0) {
-		} else {
-//			System.out.println(this.id + " was used too recently. cooldown: " + this.cooldown);
-		}
 		return this.cooldown <= 0;
 	}
 	protected final boolean hasUsesLeft() {
-		if(this.usesLeft > 0) {
-		} else {
-//			System.out.println(this.id + " is broken. uses left: " + this.usesLeft);
-		}
 		return this.usesLeft > 0;
 	}
 	protected final boolean thanosAlive() {
-		if(this.entityThanos.getHealth() > 0) {
-		} else {
-//			System.out.println("thanos is dead, f. health: " + this.entityThanos.getHealth());
-		}
 		return this.entityThanos.getHealth() > 0;
 	}
 	protected final boolean thanosHurt() {
-		if(this.entityThanos.getHealth() < this.entityThanos.getMaxHealth() / 2) {
-		} else {
-//			System.out.println("thanos isn't hurt enough. health: " + this.entityThanos.getHealth());
-		}
 		return this.entityThanos.getHealth() < this.entityThanos.getMaxHealth() / 2;
 	}
 	protected final boolean thanosWeak() {
-		if(this.entityThanos.getHealth() < this.entityThanos.getMaxHealth() / 3) {
-		} else {
-//			System.out.println("thanos isn't weak enough. health: " + this.entityThanos.getHealth());
-		}
 		return this.entityThanos.getHealth() < this.entityThanos.getMaxHealth() / 3;
 	}
 	public final void writeToNBT(NBTTagCompound compound) {

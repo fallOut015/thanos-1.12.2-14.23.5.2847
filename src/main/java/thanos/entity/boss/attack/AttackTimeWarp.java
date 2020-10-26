@@ -21,8 +21,6 @@ public class AttackTimeWarp extends Attack {
 	}
 	@Override
 	void apply() {
-		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	int getCooldown() {
@@ -30,7 +28,5 @@ public class AttackTimeWarp extends Attack {
 	}
 	@Override
 	public void backfire() {
-		// TODO Auto-generated method stub
-		
 	}
 }

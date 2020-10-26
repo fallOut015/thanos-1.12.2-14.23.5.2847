@@ -24,8 +24,6 @@ public class AttackTeleport extends Attack {
 	}
 	@Override
 	void apply() {
-		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	int getCooldown() {
@@ -33,7 +31,5 @@ public class AttackTeleport extends Attack {
 	}
 	@Override
 	public void backfire() {
-		// TODO Auto-generated method stub
-		
 	}
 }
