@@ -118,6 +118,5 @@ public class Main {
     }
 }
 
-// TODO sync lightning hits
 // TODO thanos attack speed faster
 // TODO mandala particles
