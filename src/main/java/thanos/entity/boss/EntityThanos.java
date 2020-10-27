@@ -115,7 +115,7 @@ public class EntityThanos extends EntityMob implements IRangedAttackMob {
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(50.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(6.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(MainConfig.thanos_attack);
-//        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED).setBaseValue(10);
+//        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED).setBaseValue(4.0D);
     }
 	@Override
 	protected void initEntityAI() {
@@ -183,7 +183,6 @@ public class EntityThanos extends EntityMob implements IRangedAttackMob {
 	}
 	@Override
 	public void setSwingingArms(boolean swingingArms) {
-		
 	}
 	@Override
 	public void addTrackingPlayer(EntityPlayerMP player) {
@@ -380,12 +379,7 @@ public class EntityThanos extends EntityMob implements IRangedAttackMob {
 								if(this.getEntityWorld() instanceof WorldServer) {
 									((WorldServer) this.getEntityWorld()).addWeatherEffect(new EntityLightningBolt(this.getEntityWorld(), player.posX, player.posY, player.posZ, true));
 								}
-								player.attackEntityFrom(DamageSource.causeMobDamage(this), player.getMaxHealth());
-								if(player.getHealth() > 0) {
-									player.setHealth(0);
-								} else if(player.getHealth() == Float.NaN) {
-									player.setDead();
-								}
+								player.onKillCommand();
 							}
 						}
 					}

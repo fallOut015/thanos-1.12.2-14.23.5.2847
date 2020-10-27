@@ -1,13 +1,10 @@
 package thanos;
 
-import org.apache.logging.log4j.Logger;
-
 import com.commodorethrawn.revivemod.common.handler.AltarHandler;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -22,7 +19,6 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -50,8 +46,6 @@ public class Main {
     public static final String VERSION = "1.0";
     public static final String DEPENDENCIES = "required-after:worldedit;required-after:teamsmod;required-after:revivemod";
 
-    private static Logger logger;
-    
     @ObjectHolder("thanos:snap")
     public static final SoundEvent SNAP = new SoundEvent(new ResourceLocation(MODID, "snap")).setRegistryName(new ResourceLocation(MODID, "snap"));
     @ObjectHolder("thanos:land")
@@ -59,12 +53,10 @@ public class Main {
 
 	@EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        logger = event.getModLog();
-        
         try {
             sideClient(event);
         } catch(NoSuchMethodError error) {
-        	logger.error(error + " THIS IS SUPPOSED TO HAPPEN");
+        	event.getModLog().error(error + " THIS IS SUPPOSED TO HAPPEN");
         }
     }
 	@SideOnly(Side.CLIENT)
@@ -75,10 +67,6 @@ public class Main {
         RenderingRegistry.registerEntityRenderingHandler(EntityThanos.class, RenderThanos::new);
 	}
 	
-    @EventHandler
-    public void init(FMLInitializationEvent event) {
-        logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-    }
     @EventHandler
     public static void serverInit(FMLServerStartingEvent event) {
     	event.registerServerCommand(new CommandThanos());
@@ -115,14 +103,13 @@ public class Main {
         }
     	@SubscribeEvent
         public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
-    		if (event.getModID().equals(MODID)) {
+    		if(event.getModID().equals(MODID)) {
                 ConfigManager.sync(MODID, Config.Type.INSTANCE);
             }
         }
     }
     
     public static void tryDoRespawn(World world) {
-    	System.out.println("reviving");
     	for(EntityPlayer playerIn : world.playerEntities) {
     		if(playerIn.isSpectator() && playerIn instanceof EntityPlayerMP) {
     			AltarHandler.doRevive(world, (EntityPlayerMP) playerIn);
@@ -130,3 +117,8 @@ public class Main {
     	}			
     }
 }
+
+// TODO sync lightning hits
+// TODO thanos attack speed faster
+// TODO mandala particles
+// TODO remove debugs

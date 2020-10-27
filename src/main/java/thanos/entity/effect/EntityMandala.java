@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
 public class EntityMandala extends Entity {
@@ -34,12 +35,12 @@ public class EntityMandala extends Entity {
 			this.posY = this.caster.posY;
 			this.posZ = this.caster.posZ;
 			
-			this.caster.addPotionEffect(new PotionEffect(MobEffects.SPEED, 10, 1, true, true));
+			this.caster.addPotionEffect(new PotionEffect(MobEffects.SPEED, 10, 1, false, true));
 		}
 		
 		this.getEntityWorld().getEntitiesWithinAABBExcludingEntity(this.caster, this.getEntityBoundingBox().grow(2.125 * this.scale(this.ticksExisted), 5, 2.125 * this.scale(this.ticksExisted))).forEach(entity -> {
 			if(entity instanceof EntityLivingBase && entity != this.caster) {
-				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, 2, false, false));
+				((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10, 2, false, true));
 			}
 		});
 		
@@ -49,18 +50,16 @@ public class EntityMandala extends Entity {
 			}
 		}
 		
-		if(this.world.isRemote) {
-//			for(int i = 0; i < 11.25; ++ i) {
-//			for(int j = 0; j < 360; ++ j) {
-//				double i = rand.nextInt(360);
-//				double x = this.posX + this.rand.nextInt((int) Math.max(1, Math.cos(i) * 4.25d * this.scale(this.ticksExisted)) * 2) - (Math.cos(i) * 4.25d * this.scale(this.ticksExisted)) - 0.5;
-////				double x = this.posX + (this.rand.nextInt((int) Math.max(1, ((4.25d * this.scale(this.ticksExisted))) * 2d)) - 4.25 * this.scale(this.ticksExisted)) + 1;
-//				double y = this.posY;
-//				double z = this.posZ + this.rand.nextInt((int) Math.max(1, Math.sin(i) * 4.25d * this.scale(this.ticksExisted)) * 2) - (Math.sin(i) * 4.25d * this.scale(this.ticksExisted)) - 0.5;
-////				double z = this.posZ + (this.rand.nextInt((int) Math.max(1, ((4.25d * this.scale(this.ticksExisted))) * 2d)) - 4.25 * this.scale(this.ticksExisted)) + 1;
-//	            this.world.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, x, y, z, 0, 0.25f, 0);
+//		if(this.world.isRemote && this.ticksExisted % 10 == 0) {
+//			for(int i = 0; i < 360; i += 20) {
+//				for(int j = 0; j < 5; ++ j) {
+//					double x = Math.cos(Math.toRadians(i + this.rand.nextInt(11) - 5)) * (j + this.rand.nextFloat() - 0.5) * this.scale(this.ticksExisted);
+//					double z = Math.sin(Math.toRadians(i + this.rand.nextInt(11) - 5)) * (j + this.rand.nextFloat() - 0.5) * this.scale(this.ticksExisted);
+//					this.world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, x + this.posX, this.posY, z+ this.posZ , 0, 0, 0);
+//				}
 //			}
-		}
+//			// TODO particles
+//		}
 	}
 
 	@Override
