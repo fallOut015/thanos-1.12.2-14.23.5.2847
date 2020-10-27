@@ -1,8 +1,13 @@
 package thanos.entity.boss.attack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import thanos.entity.boss.EntityThanos;
 
@@ -28,14 +33,26 @@ public class AttackLightning extends Attack {
 			this.canapply = false;
 			this.runningTicks = -1;
 		}
-		if(this.runningTicks % 5 == 0) {
-			if(this.entityThanos.getEntityWorld() instanceof WorldServer) {
-                double interpolation = (this.runningTicks + 20) / 100d;
-				double x = lerp(this.entityThanos.posX, this.targetPos.getX(), interpolation);
-				double y = lerp(this.entityThanos.posY, this.targetPos.getY(), interpolation);
-				double z = lerp(this.entityThanos.posZ, this.targetPos.getZ(), interpolation);
-				if(this.entityThanos.getPosition().getDistance((int) x, (int) y, (int) z) > 8) {
-					((WorldServer) this.entityThanos.getEntityWorld()).addWeatherEffect(new EntityLightningBolt(this.entityThanos.getEntityWorld(), x, y, z, false));
+		if(this.runningTicks % 40 == 0) {
+			World world = this.entityThanos.getEntityWorld();
+			if(world instanceof WorldServer) {
+				BlockPos thanospos = this.entityThanos.getPosition();
+				
+				List<BlockPos> lightningpositions = new ArrayList<BlockPos>();
+				
+				List<EntityPlayer> players = world.playerEntities;
+				for (EntityPlayer player : players) {
+					BlockPos playerpos = player.getPosition();
+					double distance = thanospos.getDistance(playerpos.getX(), playerpos.getY(), playerpos.getZ());
+					if (distance > 50) {
+						continue;
+					}
+					
+					lightningpositions.add(playerpos.toImmutable());
+				}
+				
+				for (BlockPos lightningpos : lightningpositions) {
+					((WorldServer)world).addWeatherEffect(new EntityLightningBolt(this.entityThanos.getEntityWorld(), lightningpos.getX(), lightningpos.getY(), lightningpos.getZ(), false));
 				}
 			}
 		}
