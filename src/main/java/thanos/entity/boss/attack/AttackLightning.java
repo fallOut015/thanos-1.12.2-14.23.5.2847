@@ -52,7 +52,7 @@ public class AttackLightning extends Attack {
 				}
 				
 				for (BlockPos lightningpos : lightningpositions) {
-					((WorldServer) this.entityThanos.getEntityWorld()).addWeatherEffect(new EntityLightningBolt(this.entityThanos.getEntityWorld(), lightningpos.getX(), lightningpos.getY(), lightningpos.getZ(), false));
+					((WorldServer)world).addWeatherEffect(new EntityLightningBolt(this.entityThanos.getEntityWorld(), lightningpos.getX(), lightningpos.getY(), lightningpos.getZ(), false));
 				}
 			}
 		}
