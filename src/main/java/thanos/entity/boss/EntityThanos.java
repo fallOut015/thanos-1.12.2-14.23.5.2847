@@ -123,7 +123,7 @@ public class EntityThanos extends EntityMob implements IRangedAttackMob {
 		
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<EntityPlayer>(this, EntityPlayer.class, false));
         this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false, new Class[0]));
-        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.5D, false) {
+        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, false) {
         	@Override
         	public boolean shouldContinueExecuting() {
         		EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
